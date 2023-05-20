@@ -1,5 +1,11 @@
 # MinimumViableOperate
-MVO is a documentation repo defining a minimal method for installation and operation of a third-party packages
+MVO is documentation repo defining a minimal viable set of installation and operation instruction example for a third-party packages.
+
+- fully referenced, avoids duplication
+- instructions for a specific aspect of the package
+- to have the fewest number of installation depencencies and steps 
+
+This repo came as over the years i have learned trying to follow instructions for instalation into an environment that i dont currently have often  results in large amounts of time installing, settup and configruation of optioanl dependencies.
 
 ## Guidelines
 
