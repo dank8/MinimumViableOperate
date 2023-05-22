@@ -14,8 +14,13 @@ sed [OPTIONS] [address]s/[regexp]/[substitute]/[flags] [STREAM]
 ```
 
 ## DESCRIPTION
-A working example of the minimum syntax values necessary for successful execution of gnu `sed` package. 
-This example will demonstrate `sed` substituting characters retreived from a file.  
+A working example of the minimum syntax values necessary for successful execution of gnu `sed` package. `sed` includes a fully featured scripting language [sed, gnu.org, 2023][4].
+
+### Installation
+- na, installed with various linux kernels 
+
+### Substitute invoke
+This example will demonstrate sed(1) substitute command, replace text characters retreived from a file. 
 
 - *[OPTIONS]* will include `-E` as pattern being used are  [POSIX regexp, gnu.org, 2023][2] , not [Glob Wildcard, gnu.org, 2023][5]
 - *[SCRIPT]* is the command to be executed against each line of the Stream (line separators are `\r\n` or `\n), the subbsitution text command sytnax:
@@ -23,28 +28,12 @@ This example will demonstrate `sed` substituting characters retreived from a fil
   - *s/* flag telling sed to use *substitute* command
   - *[regexp]* text to be removed. `/^#[ ]*/` will replace lines beginning with hash (^ means beginning fo line) [POSIX regexp, gnu.org, 2023][2]
   - *[substitute]* replacement text, in this case its empty
-  - *[flags]* regexp flags. The `g` flag is not necessary, sed always works line by line 
+  - *[flags]* sed flags. 'g' will replace all matches for the current line
 - *[STREAM]*, we will use a local file `/tmp/test.conf`
 
-#### Explanatory Notes:
-1. `sed` has a fully featured scripting language [sed, gnu.org, 2023][4]
-1. *[SCRIPT]*, can also be retrieved: 
-   - (from file) `sed ./my_script.sed [STREAM]`
-1. *[STREAM]*, can also be:
-   - (piped from string) `echo "# hello world" | sed [SCRIPT]`
-   - (piped from a command output) `cat ./input.txt | sed [SCRIPT]`
-  - (piped Network location) `wget -O - http://stackoverflow.com | sed [SCRIPT]`, FYI: [Wget, gnu.org, 2023][3]
-1. alternatives for the *[ADDRESS]*:
-   - `/\b\(two|three|[0-9]{1,5}\)/`, will execute the command on lines containing numbers or **word** 'two' or 'three'.
- 
-### Installation
-- na, installed with linux kernels 
-
-### Invocation Example
-
 ```lang-sh
-echo -e "# one two 12\n# three four\n# five six 56\n#seven eight 12\n# nine 999999\nhello=two\nthree\nblah # happy" >> /tmp/test.conf
-~$ cat /tmp/test.conf
+~$ echo -e "# one two 12\n# three four\n# five six 56\n#seven eight 12\n# nine 999999\nhello=two\nthree\nblah # happy" >> /tmp/test.conf
+cat /tmp/test.conf
 # one two 12
 # three four
 # five six 56
@@ -54,6 +43,7 @@ hello=two
 three
 blah # happy
 
+~$ # replace the first match in each line
 ~$ sed -E '/[0-9]{1,5}$/s/^#[ ]*//' /tmp/test.conf
 one two 12
 one two 12
@@ -63,7 +53,24 @@ seven eight 12
 hello=two
 three
 blah # happy
+
+~$ # replace all matches 
+~$ echo "hello;world;two" | sed -E 's/\;/\n/g'
+hello
+world
+two
+
 ```
+
+### Explanatory Notes:
+1. *[SCRIPT]*, can also be retrieved: 
+   - (from file) `sed ./my_script.sed [STREAM]`
+1. *[STREAM]*, can also be:
+   - (piped from string) `echo "# hello world" | sed [SCRIPT]`
+   - (piped from a command output) `cat ./input.txt | sed [SCRIPT]`
+  - (piped Network location) `wget -O - http://stackoverflow.com | sed [SCRIPT]`, FYI: [Wget, gnu.org, 2023][3]
+1. alternatives for the *[ADDRESS]*:
+   - `/\b\(two|three|[0-9]{1,5}\)/`, will execute the command on lines containing numbers or **word** 'two' or 'three'.
 
 ## Dependencies
 org.gnu.sed == 4.8
