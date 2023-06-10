@@ -52,10 +52,10 @@ A starting player is selected (oldest or highest dice roll)
    - A *road* (shaped like bars) can only be placed along the edge of a *terrain*  
 1. Settlements 
    - place 2x settlements at different intersection of three *terrain hexagon*. TIP: 
-     - for *Settlement play*, choosing the corner of *mine*, *pasture*, *field* and *forrest* *terrain* will help get you *resources* for building more *settlements*
-1. 15x roads in *pasture* hat color 
-                 *field* te
-(All other game p*forrest* ieces can remain in the box)
+     - for *Settlement play*, choosing *terrain* corners with *mine*, *pasture*, *field* and *forrest* will help you build *settlements* sooner
+1. 15x roads in that color 
+
+(All other game pieces remain in the box)
 
 ### 'SETTLEMENTS' RULES
 Playing features in use: Hexagons, Tokens, Resource cards. 
