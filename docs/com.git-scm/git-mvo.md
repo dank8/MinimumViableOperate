@@ -4,6 +4,7 @@
 ## SYNOPSIS
 
 ```lang-sh
+<<<<<<< HEAD
  # Generic invocation
 git -h
 ```
@@ -34,6 +35,40 @@ git config --global user.email "johndoe@example.com"
 
 ```lang-sh
 git config --global credential.helper wincred
+=======
+ # Generic invoation
+git [OPTIONS]
+```
+
+## DESCRIPTION
+A working minimum syntax and minimum flows necessary to make changes to Local and Remote Repositories.
+
+
+### INSTALLATION
+
+1. [git-scm.com](https://git-scm.com)
+
+### INVOKE
+
+#### Configure user
+
+```lang-sh
+git config --global user.name ""
+git config --global user.email johndoe@example.com
+```
+> TIP:  
+> `--global` applies for all repos for the current user  
+>  `--system` applies for all users in the system  
+> `--local` applies for a specific repo  
+
+
+#### Configure credentials
+
+> TIP: depending on the remote repository, can also use repostiroy authenticator, GitHub for example provides https://github.com/cli/cli
+
+```lang-sh
+git config --global credential.helper wincred`
+>>>>>>> origin/main
 
 git credential fill
 protocol=https
@@ -41,6 +76,7 @@ host=github.com
 username=<username>
 password=<password>
 ```
+<<<<<<< HEAD
 
 > TIP: some repository hosting services provide an authenticator that integrates with git, for example GitHub https://github.com/cli/cli
 
@@ -61,6 +97,25 @@ git clone <url> -b <branchName>
 ```
 
 ### Modification Workflow of GIT Repositories
+=======
+#### Working with Local Repostiory
+
+```lang-sh
+# create empty local repository
+cd <EmptyFolderForRepository>
+git init
+```
+
+### Working with Remote Repositories
+
+```lang-sh
+# download a remote repository
+cd {LocalRootFolderOfRemoteSystem}
+git clone <url> -b <branchName>
+```
+
+#### Full workflow for Remote Repositories
+>>>>>>> origin/main
 ```
  ┌────────────────────────────────────────────────────────────────────────┐
  │  ┌─────────────── ORIGIN REPOSITORY ──┐                                │
@@ -93,6 +148,7 @@ git clone <url> -b <branchName>
  │                                         └   └file4     ┘               │
  └────────────────────────────────────────────────────────────────────────┘
 ```
+<<<<<<< HEAD
 ### Fundamentals of making changes 
 
 ```lang-sh
@@ -105,10 +161,22 @@ git switch origin <branchName>
 git pull --all
 ```
 
+=======
+#### Fundamentals of making changes 
+```lang-sh
+# choose branch to show in the Work Tree (file system)
+git switch origin <branchName>
+```
+```lang-sh
+# download latest changes from ORIGIN
+git pull --all
+```
+>>>>>>> origin/main
 ```lang-sh
 # create commit
 git commit -a -m <commit message text>
 ```
+<<<<<<< HEAD
 
 ```lang-sh
 # check the status for any missed changes
@@ -137,6 +205,34 @@ git push origin
 ```
  
 ### Commands Local Repository commands
+=======
+```lang-sh
+# check status for any missed changes
+git status
+```
+```lang-sh
+# Send commit snapshots to remote repository
+git push origin
+```
+
+### EXPLANATORY NOTES
+
+#### Moving files
+
+> TIP: using git mv when rename, moving files keeps association to the file history. Using Filesystem delete or rename will detach history from current file. 
+
+#### Structure of locally cloned Repository 
+
+```
+  └─`ORIGIN` the *Remote Repository*, perminent location where data is version controled and stored).
+      ├─`WORK TREE` the user makes changes in this tree, it is a local copy of a remote repostiroy visible as file system files and folders.
+      └─`GIT DIR` the *Staging* folder, by default `.git` subdirectory.
+          ├─`GIT INDEX FILE` the list of working Tree changes that will be committed at the next `git commit`
+          └─`GIT OBJECT DIRECTORY` the *local repository* or *staging*, hidden from the user, all changes that are version controlled (for instance `git commit` or `git pull`).
+```
+ 
+#### Commands Local Repository commands
+>>>>>>> origin/main
 
 ```
  ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -147,7 +243,11 @@ git push origin
  │     └───────┬───────┘       └───────────────────┬──┘             └───┬────┘                                                 │
  │             │                                   │                    │    REPOSITORY LIFECYCLE                              │
  │             │                                   │                    │                                                      │
+<<<<<<< HEAD
  │             │                                   │           git clone│    1. Create the local repository                    │
+=======
+ │             │                                   │           git clone│    1. create the local repository                    │
+>>>>>>> origin/main
  │             │◄──────────────────────────────────┤◄───────────────────┤                                                      │
  │      del *  │                                   │                    │    3. delete the local repository                    │
  │     ───────►├──────────────────────────────────►│                    │                                                      │
@@ -161,14 +261,22 @@ git push origin
  │             │                                   │                    │    FUNDAMENTAL VERSION CONTROL                       │
  │             │                                   │                    │                                                      │
  │             │                                   │            git pull│    1. git pull                                       │
+<<<<<<< HEAD
  │             │◄──────────────────────────────────┤◄───────────────────┤         Fetch the latest remote repository commits   │
+=======
+ │             │◄──────────────────────────────────┤◄───────────────────┤         fetch latest remote repository commits       │
+>>>>>>> origin/main
  │             │                                   │                    │                                                      │
  │             │ git commit -a -m                  │                    │    2. git commit -a -m <message>                     │
  │             ├──────────────────────────────────►│                    │         commits all working directory changes.       │
  │             │                                   │                    │         simple process does not stage files.         │
  │             │            git status             │                    │    3. git status                                     │
  │             │◄─────────────────────────────────►│                    │         list status of each file                     │
+<<<<<<< HEAD
  │             │                                   │                    │         (unstaged > staged > committed)              │
+=======
+ │             │                                   │                    │         (unstanged > staged > committed)             │
+>>>>>>> origin/main
  │             │                                   │ git push           │    4. git push origin                                │
  │             │                                   ├───────────────────►│         write commits to Remote repository           │
  └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
@@ -188,6 +296,7 @@ git push origin
  │             │ git rm (remove)  │                │                    │         stage working tree changes in local repo     │
  │             │ git mv (move)    │                │                    │    2. git mv <source> <desitnation>                  │
  │             ├─────────────────►│                │                    │         move and rename files,                       │
+<<<<<<< HEAD
  │             │                  │                │                    │         keep version history with the new file.      │
  │             │ git reset        │                │                    │                                                      │
  │             │ git restore      │                │                    │    3. git restore                                    │
@@ -196,35 +305,62 @@ git push origin
  │             │                  │ git commit -m  │                    │    4. git commit -m <message text>                   │
  │             │                  ├───────────────►│                    │         create snapshot ready for remote repository  │
  │             │                  │                │                    │         NOTE: --ammend will append to previous commit│
+=======
+ │             │                  │                │                    │         keep version history with new file.          │
+ │             │ git reset        │                │                    │                                                      │
+ │             │ git restore      │                │                    │    3. git restore                                    │
+ │             │◄─────────────────┤                │                    │        remove staging index, changes 'unstaged'      │
+ │             │                  │                │                    │        does not alter the work tree files            │
+ │             │                  │ git commit -m  │                    │    4. git commit -m <message text>                   │
+ │             │                  ├───────────────►│                    │         create snapshot ready for remote repository  │
+ │             │                  │                │                    │         NOTE: --ammend will append to current commit │
+>>>>>>> origin/main
  │             │ git stash push   │                │                    │    5. git stash push -m <message>                    │
  │             │◄────────────────►│                │                    │         staged changes stored locally with message   │
  │             │◄────────────────►│                │                    │         staged changes stored locally with message   │
  │             │ git stash list   │                │                    │    6. git stash list                                 │
  │             │      ───────────►│                │                    │         list of all stashed changes                  │
  │             │ git stash apply  │                │                    │    7. git stash apply <stashName                     │
+<<<<<<< HEAD
  │             │◄─────────────────┤                │                    │         remove all changes from working Tree         │
+=======
+ │             │◄─────────────────┤                │                    │         remove all changes from working tree         │
+>>>>>>> origin/main
  │             │                  │                │                    │         restore named stash                          │
  │             │                                   │    git fetch       │    8. git fetch <remote>                             │
  │             │                                   ├───────────────────►│         downloads all data from remote repository    │
  │             │                                   │                    │                                                      │
  │             │                        git switch │                    │    9. git switch origin <branch>                     │
+<<<<<<< HEAD
  │             │◄──────────────────────────────────┤                    │         update work tree files to another branch     │
  │             │                                   │                    │                                                      │
  │             │                        git rebase │                    │                                                      │
  │             │                         git merge │                    │   10. git merge <branch>                             │
  │             │                       ┌───────────┤                    │         add changes from another branch to work Tree │
+=======
+ │             │◄──────────────────────────────────┤                    │         upate work tree files to another branch      │
+ │             │                                   │                    │                                                      │
+ │             │                        git rebase │                    │                                                      │
+ │             │                         git merge │                    │   10. git merge <branch>                             │
+ │             │                       ┌───────────┤                    │         add changes from another branch to work tree │
+>>>>>>> origin/main
  │             │◄──────────────────────┤           │                    │                                                      │
  │             │                       └───────────┤                    │                                                      │
  │             │                                   │                    │                                                      │
  │             │                  git bisect start │                    │                                                      │
  │             │                    git bisect bad │                    │                                                      │
  │             │                   git bisect good │                    │  11. git bisect                                      │
+<<<<<<< HEAD
  │             │                       ┌───────────┤                    │         semi-automated fetch of specific versions    │
+=======
+ │             │                       ┌───────────┤                    │         semi automated fetch of specific versions    │
+>>>>>>> origin/main
  │             │◄──────────────────────┤           │                    │         Assist in identifying version with bug.      │
  │             │                       └───────────┤                    │                                                      │
  └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
+<<<<<<< HEAD
 ### Fetch and Pull
 
 - `git fetch` downloads the latest updates from the remote repository into the local repository
@@ -277,6 +413,34 @@ Both commands resolve a conflict where there is more than one 'latest' commit on
 ## DEPENDENCIES
 
 NONE
+=======
+#### Fetch and Pull
+1. `git fetch` downloads the latest updates from the remote repository into the local repository
+2. `git pull` runs `git fetch` then attempts to reconcile remote changes to the working tree using `git rebase` or `git merge`
+
+#### Merge and Rebase
+1. `git merge` when a user commits to a branch two different commits are made to the same branch, 
+
+
+snapshot
+branch
+
+working tree
+staging area (Staged)
+git directory (Committed)
+remote repository
+
+remote 
+untracked
+staged
+committed
+
+
+
+## DEPENDENCIES
+
+PACKAGE == VERSION
+>>>>>>> origin/main
 
 ## REFERENCES
 
