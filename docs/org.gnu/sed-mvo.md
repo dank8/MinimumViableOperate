@@ -4,7 +4,7 @@
 ## SYNOPSIS
 
 ```lang-sh
-# Generic invoation
+# Generic invoke
 sed [OPTIONS] [SCRIPT] [STREAM]
 ```
 
@@ -16,18 +16,18 @@ sed [OPTIONS] [address]s/[regexp]/[substitute]/[flags] [STREAM]
 ## DESCRIPTION
 A working example of the minimum syntax values necessary for successful execution of gnu `sed` package. `sed` includes a fully featured scripting language [sed, gnu.org, 2023][4].
 
-### Installation
-- na, installed with various linux kernels 
+## INSTALLATION
+- na, installed with various Linux kernels 
 
 ### Substitute invoke
-This example will demonstrate sed(1) substitute command, replace text characters retreived from a file. 
+This example will demonstrate the sed(1) substitute command, which replaces characters read from a file. 
 
-- *[OPTIONS]* will include `-E` as pattern being used are  [POSIX regexp, gnu.org, 2023][2] , not [Glob Wildcard, gnu.org, 2023][5]
-- *[SCRIPT]* is the command to be executed against each line of the Stream (line separators are `\r\n` or `\n), the subbsitution text command sytnax:
-  - *[address]* sed executes on lines that match the pattern `/[0-9]{1,5}$/`, the $ symbol will match numbers at the end of the line [sed-addresses, gnu.org, 2023][1]
+- *[OPTIONS]* will include `-E` forcing the pattern syntax used to [POSIX regexp, gnu.org, 2023][2], not [Glob Wildcard, gnu.org, 2023][5]
+- *[SCRIPT]* the command to be executed on each line of the Stream (line separators are `\r\n` or `\n), the substitution text command syntax:
+  - *[address]* sed executes on lines that match the pattern `/[0-9]{1,5}$/`, the $ symbol matches a number at the end of the line [sed-addresses, gnu.org, 2023][1]
   - *s/* flag telling sed to use *substitute* command
-  - *[regexp]* text to be removed. `/^#[ ]*/` will replace lines beginning with hash (^ means beginning fo line) [POSIX regexp, gnu.org, 2023][2]
-  - *[substitute]* replacement text, in this case its empty
+  - *[regexp]* text to be removed. `/^#[ ]*/` will replace lines beginning with hash (^ means beginning of line) [POSIX regexp, gnu.org, 2023][2]
+  - *[substitute]* replacement text, in this case it is empty
   - *[flags]* sed flags. 'g' will replace all matches for the current line
 - *[STREAM]*, we will use a local file `/tmp/test.conf`
 
@@ -43,7 +43,7 @@ hello=two
 three
 blah # happy
 
-~$ # replace the first match in each line
+~$ # Replace the first match in each line
 ~$ sed -E '/[0-9]{1,5}$/s/^#[ ]*//' /tmp/test.conf
 one two 12
 one two 12
@@ -54,7 +54,7 @@ hello=two
 three
 blah # happy
 
-~$ # replace all matches 
+~$ # Replace all matches 
 ~$ echo "hello;world;two" | sed -E 's/\;/\n/g'
 hello
 world
@@ -62,17 +62,19 @@ two
 
 ```
 
-### Explanatory Notes:
+## EXPLANATORY NOTES
+
 1. *[SCRIPT]*, can also be retrieved: 
    - (from file) `sed ./my_script.sed [STREAM]`
 1. *[STREAM]*, can also be:
-   - (piped from string) `echo "# hello world" | sed [SCRIPT]`
-   - (piped from a command output) `cat ./input.txt | sed [SCRIPT]`
+   - (a piped string) `echo "# hello world" | sed [SCRIPT]`
+   - (a piped command output) `cat ./input.txt | sed [SCRIPT]`
   - (piped Network location) `wget -O - http://stackoverflow.com | sed [SCRIPT]`, FYI: [Wget, gnu.org, 2023][3]
 1. alternatives for the *[ADDRESS]*:
    - `/\b\(two|three|[0-9]{1,5}\)/`, will execute the command on lines containing numbers or **word** 'two' or 'three'.
 
-## Dependencies
+## DEPENDENCIES
+
 org.gnu.sed == 4.8
 
   [1]: https://www.gnu.org/software/sed/manual/sed.html#sed-addresses

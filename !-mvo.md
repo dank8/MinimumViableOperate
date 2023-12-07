@@ -1,46 +1,36 @@
 ## NAME
- sed, a minimum viable operating instruction for package [# TODO]
+ git, a minimum viable operating instruction for package git 
 
 ## SYNOPSIS
 
 ```lang-sh
- # Generic invoation
-{package name} [OPTIONS]
-```
-
-```lang-sh
- # invoke
-{package name} [OPTIONS]
+ # Generic invocation
+gh [OPTIONS]
 ```
 
 ## DESCRIPTION
-A working examples of the minimum syntax values necessary for successful execution of [# ️TODO] package.
+A working example of minimum syntax to authenticate with a GitHub-hosted project.
 
 > QUOTE FROM DEVELOPER
 
-### INSTALLATION
+## INSTALLATION
 
-1. # ️TODO
+1. [github cli](https://github.com/cli/cli)
 
-### INVOKE
+## INVOKE
 
- # ️TODO
-
+### Configure credentials
 
 ```lang-sh
-$ COMMAND
-OUTPUT
+gh auth login
 ```
 
-### EXPLANATORY NOTES
+> At this point, I generally switch to using [git-scm](../com.git-scm)
 
-1. # ️TODO
+## EXPLANATORY NOTES
+
+1. NONE
 
 ## DEPENDENCIES
 
-PACKAGE == VERSION
-
-## REFERENCES
-
-  [1]: # ️TODO
-
+NONE
