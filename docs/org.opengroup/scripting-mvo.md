@@ -7,12 +7,14 @@
  # Generic Utility convention
 UTILITY_NAME [OPTIONS...] [OPERANDS...]
 ```
+
 ```lang-sh
  # valid USAGE definition
 UTILITY_NAME [ -abcd argument][ -e][ -f][ -g argument][ -h| -i] [--] [OPERAND...]
 ```
 
 ## DESCRIPTION
+
 A working examples of the minimum syntax values necessary for successful execution of utilities and scripts from the command line.
 
 > "argument syntax of the standard utilities and introduces terminology used throughout POSIX.1-2017 for describing the arguments processed by the utilities." [opengroup.org, 2023](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html#tag_12)
@@ -36,12 +38,15 @@ A working examples of the minimum syntax values necessary for successful executi
      - order is enforced for *OPERAND* (Guideline 12)
      - `-` indicates file for standard input and output, or a file named `-` (Guideline 13)
 1. Examples demonstrating how Utility Syntax sees command line arguments:
+
 ```
 ./getopts_test "hello"-ab how-to-geek,"dave dee" -c dozy beaky -d -mick - tich
 ./getopts_test -ab how-to-geek,"dave dee" -c dozy beaky -d -mick - tich
 ./getopts_test -ab how-to-geek,"dave dee" -- -c dozy beaky -mick - tich
 ```
-   - using script
+
+- using script
+
 ```lang-sh
 #!/bin/bash
 # File name ./getopts_test
@@ -55,6 +60,7 @@ usage() { echo "Usage: $0 -o OPTSTRING OPTIONS [OPERANDS]"; echo "OPTSTRING must
 if [[  $# -lt 1 ]]; then usage; fi
 
 # Pattern detect
+
 optstring=""
 for (( itm=1; itm<=$#; itm++ ))
 do
@@ -89,13 +95,13 @@ do
 done
 ```
 
-> QUOTE FROM DEVELOPER
 
-### INSTALLATION
+## INSTALLATION
 
-na, installed with various linux kernels 
+na, installed with various Linux kernels 
 
-### invoke
+## INVOKE
+
 This example will demonstrate getopts command. 
 
 - *VAR* variable name for writing each option argument to. 
@@ -111,19 +117,14 @@ This example will demonstrate getopts command.
 - *[STREAM]*, we will use a local file `/tmp/test.conf`
 
 
-```lang-sh
-$ COMMAND
-OUTPUT
-```
+## EXPLANATORY NOTES
 
-### EXPLANATORY NOTES
-
-1. 
+1. [none]
 
 > "The first -- argument that is not an option-argument should be accepted as a delimiter indicating the end of options" [opengroup.org, 2023](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html#tag_12_02), Guideline 10.
 
 
-## Dependencies
+## DEPENDENCIES
 
 PACKAGE == VERSION
 

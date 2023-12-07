@@ -4,26 +4,33 @@
 ## SYNOPSIS
 
 ```lang-sh
- # Generic invoation
+ # Generic invocation
 gh [OPTIONS]
 ```
 
 ## DESCRIPTION
-A working examples of minimum syntax and minimum flows necessary to sync with a Remote project.
+A working example of minimum syntax to authenticate with a GitHub-hosted project.
 
 > QUOTE FROM DEVELOPER
 
-### INSTALLATION
+## INSTALLATION
 
 1. [github cli](https://github.com/cli/cli)
 
-### INVOKE
+## INVOKE
 
-#### Configure credentials
+### Configure credentials
 
 ```lang-sh
 gh auth login
 ```
 
-> At this point i generally switch to using [git-scm](../com.git-scm)
+> At this point, I generally switch to using [git-scm](../com.git-scm)
 
+## EXPLANATORY NOTES
+
+1. NONE
+
+## DEPENDENCIES
+
+NONE

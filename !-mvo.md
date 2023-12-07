@@ -4,7 +4,7 @@
 ## SYNOPSIS
 
 ```lang-sh
- # Generic invoation
+ # Generic invocation
 {package name} [OPTIONS]
 ```
 
@@ -14,11 +14,11 @@
 ```
 
 ## DESCRIPTION
-A working examples of the minimum syntax values necessary for successful execution of [# ️TODO] package.
+working examples of the minimum syntax values necessary for successfully launching [# ️TODO] package.
 
 > QUOTE FROM DEVELOPER
 
-### INSTALLATION
+## INSTALLATION
 
 1. # ️TODO
 
@@ -32,7 +32,7 @@ $ COMMAND
 OUTPUT
 ```
 
-### EXPLANATORY NOTES
+## EXPLANATORY NOTES
 
 1. # ️TODO
 
