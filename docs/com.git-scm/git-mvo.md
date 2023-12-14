@@ -92,36 +92,36 @@ git clone <url> -b <branchName>
 ### Modification Workflow of GIT Repositories
 
 ```
- ┌────────────────────────────────────────────────────────────────────────┐
- │  ┌─────────────── ORIGIN REPOSITORY ──┐                                │
- │  │ ************                       │                                │
- │  │ * Branch1  *                       │                                │
- │  │ * ┌─┐  ┌─┐ *                       │                                │
- │  │ * │A├─►│B│ *                       │                                │
- │  │ * └─┘  └┬┘ *                       │                                │
- │  │ ********│***                       │                                │
- │  │         │                          │                                │
- │  │      ***│************************* │                                │
- │  │      *  │   Branch2   ┌─┐        * │                                │
- │  │      *  │             │E├─┐      * │                                │
- │  │      * ┌▼┐  ┌─┐  ┌─┬─►└─┘ │  ┌─┐ * │                                │
- │  │      * │A├─►│C├─►│D│      ├─►│I│ * │           ┌─                   │
- │  │      * └─┘  └─┘  └┬┴─►┌─┐ │  └─┘ * │           │  ┌──────────┐      │
- │  │      *            │   │G├─┘      * │           │  │git commit│    ┐ │
- │  │      *            │   └─┘        * │           │ ┌▼┐     ┌───┴──┐ │ │
- │  │      *************│*************** │           │ │H│     │STAGED│ │ │
- │  │                   │                │           │ └┬┘     └───▲──┘ │ │ 
- │  │                 **│************ ───┘           └──│─STAGING─ │────┘ │
- │  │                 * │Branch3    *                   │          │      │
- │  │                 *┌▼┐  ┌─┐  ┌┐ *           git push│          │      │
- │  │                 *│D├─►│F│  │◄─────────────────────┘          │      │
- │  │                 *└─┘  └┬┘  └┘ *      ┌ WORKING TREE ┐        │      │
- │  └─────────────────*******│*******      │  FolderA     │        │      │
- │                           │             │  ├file1      │        │      │
- │                           │git clone    │  └FolderB    │git add │      │
- │                           └─────────────┤   └file3     ├────────┘      │
- │                                         └   └file4     ┘               │
- └────────────────────────────────────────────────────────────────────────┘
+ ┌────────────────────────────────────────────────────────────────────────────┐
+ │  ┌───────────── 'ORIGIN' REPOSITORY ──┐                                    │
+ │  │ ************                       │                                    │
+ │  │ * Branch1  *                       │                                    │
+ │  │ * ┌─┐  ┌─┐ *                       │                                    │
+ │  │ * │A├─►│B│ *                       │                                    │
+ │  │ * └─┘  └┬┘ *                       │                                    │
+ │  │ ********│***                       │                                    │
+ │  │         │                          │                                    │
+ │  │      ***│************************* │                                    │
+ │  │      *  │   Branch2   ┌─┐        * │                                    │
+ │  │      *  │             │E├─┐      * │                                    │
+ │  │      * ┌▼┐  ┌─┐  ┌─┬─►└─┘ │  ┌─┐ * │                                    │
+ │  │      * │A├─►│C├─►│D│      ├─►│I│ * │               ┌─                   │
+ │  │      * └─┘  └─┘  └┬┴─►┌─┐ │  └─┘ * │               │  ┌──────────┐      │
+ │  │      *            │   │G├─┘      * │               │  │git commit│    ┐ │
+ │  │      *            │   └─┘        * │               │ ┌▼┐     ┌───┴──┐ │ │
+ │  │      *************│*************** │               │ │H│     │STAGED│ │ │
+ │  │                   │                │               │ └┬┘     └───▲──┘ │ │ 
+ │  │                 **│************ ───┘               └──│─STAGING─ │────┘ │
+ │  │                 * │Branch3    *                       │          │      │
+ │  │                 *┌▼┐  ┌─┐  ┌┐ *               git push│          │      │
+ │  │                 *│D├─►│F│  │◄─────────────────────────┘          │      │
+ │  │                 *└─┘  └┬┘  └┘ *          ┌ WORKING TREE ┐        │      │
+ │  └─────────────────*******│*******          │  FolderA     │        │      │
+ │                           │                 │  ├file1      │        │      │
+ │                           │git clone ┌HEAD┐ │  └FolderB    │git add │      │
+ │                           └─────────►│ D  ├─┤   └file3     ├────────┘      │
+ │                                      └────┘ └   └file4     ┘               │
+ └────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Fundamentals of making changes 
@@ -149,6 +149,12 @@ git status
 ```lang-sh
 # Send commit snapshots to the remote repository
 git push origin
+```
+
+### Viewing History
+
+```
+git log --graph
 ```
 
 ## EXPLANATORY NOTES
@@ -232,7 +238,7 @@ git push origin
  │             │◄────────────────►│                │                    │         staged changes stored locally with message   │
  │             │ git stash list   │                │                    │    6. git stash list                                 │
  │             │      ───────────►│                │                    │         list of all stashed changes                  │
- │             │ git stash apply  │                │                    │    7. git stash apply <stashName                     │
+ │             │ git stash apply  │                │                    │    7. git stash apply <stashName>                    │
  │             │◄─────────────────┤                │                    │         remove all changes from working Tree         │
  │             │                  │                │                    │         restore named stash                          │
  │             │                                   │    git fetch       │    8. git fetch <remote>                             │
@@ -242,7 +248,7 @@ git push origin
  │             │◄──────────────────────────────────┤                    │         update work tree files to another branch     │
  │             │                                   │                    │                                                      │
  │             │                        git rebase │                    │                                                      │
- │             │                         git merge │                    │   10. git merge <branch>                             │
+ │             │                         git merge │                    │   10. git merge <branch>  [--abort]                  │
  │             │                       ┌───────────┤                    │         add changes from another branch to work Tree │
  │             │◄──────────────────────┤           │                    │                                                      │
  │             │                       └───────────┤                    │                                                      │
@@ -292,6 +298,71 @@ Both commands resolve a conflict where there is more than one 'latest' commit on
 ```
 
 `git rebase` alters the history, removing all but one of the conflicting commit snapshots. All changes are combined to form a single 'latest' commit snapshot. Many developers prefer the `rebase` method as it simplifies the history and its comprehension.
+
+```
+ ┌─────────────────────────────┐
+ │ Branch2                     │
+ │ ┌─┐  ┌─┐  ┌─┐git rebase┌─┐  │
+ │ │A├─►│B├─►│D├─────────►│E│  │
+ │ └─┘  └─┘  └─┘          └─┘  │
+ │           \ /               │ 
+ │          ─ C ─              │
+ │           / \               │
+ └─────────────────────────────┘
+```
+
+
+### Revert, Restore, Reset
+
+`git revert` reverse the effect of an earlier commit
+
+```
+ ┌──────────────────────┐
+ │ Branch2              │
+ │ ┌─┐  ┌─┐  ┌─┐  ┌──┐  │
+ │ │A├─►│B├─►│D├─►│!B│  │
+ │ └─┘  └.┘  └─┘  └.─┘  │
+ │       ...........    │ 
+ │                      │
+ │                      │
+ └──────────────────────┘
+```
+
+`git reset` remove staged or unstaged differences from local storage. 
+Optionally specify a <commit> index to change the local HEAD to a different commit
+
+```
+ ┌─────────────────┬───────┬───────────┬───────┬─────────────────────────────┐
+ │                 │ HEAD  │  WORKING  │STAGING│                             │
+ │ Branch2         │       │   TREE    │       │                             │
+ │ ┌─┐  ┌─┐  ┌─┐   │  ┌─┐  │  ┌─┐ ┌─┐  │  ┌─┐  │                             │
+ │ │A├─►│B├─►│D├───┼──┤D│  │  │D│∪│Δ│  │  │E│  │ local storage begin state   │
+ │ └─┘  └─┘  └─┘   │  └─┘  │  └─┘ └─┘  │  └─┘  │                             │
+
+ │ ┌─┐  ┌─┐  ┌─┐   │  \ /  │  ┌─┐ ┌─┐  │  ┌─┐  │                             │
+ │ │A├─►│B├─►│D│   │ ─ D ─ │  │D│∪│Δ│  │  │E│  │ git reset --soft <commit>   │
+ │ └─┘  └┬┘  └─┘   │  / \  │  └─┘ └─┘  │  └─┘  │  - Change HEAD only         │
+ │       │         │  ┌─┐  │           │       │                             │
+ │       └─────────┼──┤B│  │           │       │                             │
+ │                 │  └─┘  │           │       │                             │
+
+ │ ┌─┐  ┌─┐  ┌─┐   │  \ /  │  \ /      │  \ /  │                             │
+ │ │A├─►│B├─►│D│   │ ─ D ─ │ ─ D ─     │ ─ E ─ │                             │
+ │ └─┘  └┬┘  └─┘   │  / \  │  / \      │  / \  │ git reset --merge <commit>  │
+ │       │         │  ┌─┐  │  ┌─┐ ┌─┐  │       │  - discard stashed, staged. │
+ │       └─────────┼──┤B│  │  │B│∪│Δ│  │       │  - Carries forward unstaged.│
+ │                 │  └─┘  │  └─┘ └─┘  │       │                             │
+
+ │ ┌─┐  ┌─┐  ┌─┐   │  \ /  │  \ / \ /  │  \ /  │                             │
+ │ │A├─►│B├─►│D│   │ ─ D ─ │ ─ D ─ Δ ─ │ ─ E ─ │                             │
+ │ └─┘  └┬┘  └─┘   │  / \  │  / \ / \  │  / \  │  git reset --hard <commit>  │
+ │       │         │  ┌─┐  │  ┌─┐      │       │   - removes stashed, staged │
+ │       └─────────┼──┤B│  │  │B│      │       │     and unstaged changes    │
+ │                 │  └─┘  │  └─┘      │       │                             │ 
+ └─────────────────┴───────┴───────────┴───────┴─────────────────────────────┘
+```
+
+`git restore --source=<tree>` revert a specific sub-path in the working tree to the HEAD.  It does not alter the 
 
 ```
  ┌─────────────────────────────┐
