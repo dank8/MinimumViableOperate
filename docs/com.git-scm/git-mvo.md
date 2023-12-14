@@ -364,6 +364,17 @@ Optionally specify a <commit> index to change the local HEAD to a different comm
 
 `git restore --source=<tree>` revert a specific sub-path in the working tree to the HEAD.  It does not alter the 
 
+```
+ ┌─────────────────────────────┐
+ │ Branch2                     │
+ │ ┌─┐  ┌─┐  ┌─┐git rebase┌─┐  │
+ │ │A├─►│B├─►│D├─────────►│E│  │
+ │ └─┘  └─┘  └─┘          └─┘  │
+ │           \ /               │ 
+ │          ─ C ─              │
+ │           / \               │
+ └─────────────────────────────┘
+```
 
 ## DEPENDENCIES
 
