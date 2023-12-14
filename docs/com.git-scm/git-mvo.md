@@ -238,7 +238,7 @@ git log --graph
  │             │◄────────────────►│                │                    │         staged changes stored locally with message   │
  │             │ git stash list   │                │                    │    6. git stash list                                 │
  │             │      ───────────►│                │                    │         list of all stashed changes                  │
- │             │ git stash apply  │                │                    │    7. git stash apply <stashName                     │
+ │             │ git stash apply  │                │                    │    7. git stash apply <stashName>                    │
  │             │◄─────────────────┤                │                    │         remove all changes from working Tree         │
  │             │                  │                │                    │         restore named stash                          │
  │             │                                   │    git fetch       │    8. git fetch <remote>                             │
@@ -248,7 +248,7 @@ git log --graph
  │             │◄──────────────────────────────────┤                    │         update work tree files to another branch     │
  │             │                                   │                    │                                                      │
  │             │                        git rebase │                    │                                                      │
- │             │                         git merge │                    │   10. git merge <branch>                             │
+ │             │                         git merge │                    │   10. git merge <branch>  [--abort]                  │
  │             │                       ┌───────────┤                    │         add changes from another branch to work Tree │
  │             │◄──────────────────────┤           │                    │                                                      │
  │             │                       └───────────┤                    │                                                      │
@@ -341,28 +341,28 @@ Optionally specify a <commit> index to change the local HEAD to a different comm
 
  │ ┌─┐  ┌─┐  ┌─┐   │  \ /  │  ┌─┐ ┌─┐  │  ┌─┐  │                             │
  │ │A├─►│B├─►│D│   │ ─ D ─ │  │D│∪│Δ│  │  │E│  │ git reset --soft <commit>   │
- │ └─┘  └┬┘  └─┘   │  / \  │  └─┘ └─┘  │  └─┘  │   - Change HEAD only        │
+ │ └─┘  └┬┘  └─┘   │  / \  │  └─┘ └─┘  │  └─┘  │  - Change HEAD only         │
  │       │         │  ┌─┐  │           │       │                             │
  │       └─────────┼──┤B│  │           │       │                             │
  │                 │  └─┘  │           │       │                             │
 
  │ ┌─┐  ┌─┐  ┌─┐   │  \ /  │  \ /      │  \ /  │                             │
  │ │A├─►│B├─►│D│   │ ─ D ─ │ ─ D ─     │ ─ E ─ │                             │
- │ └─┘  └┬┘  └─┘   │  / \  │  / \      │  / \  │  git reset --merge <commit> │
- │       │         │  ┌─┐  │  ┌─┐ ┌─┐  │       │   - Carries forward staged  │
- │       └─────────┼──┤B│  │  │B│∪│Δ│  │       │     and unstaged changes    │
+ │ └─┘  └┬┘  └─┘   │  / \  │  / \      │  / \  │ git reset --merge <commit>  │
+ │       │         │  ┌─┐  │  ┌─┐ ┌─┐  │       │  - discard stashed, staged. │
+ │       └─────────┼──┤B│  │  │B│∪│Δ│  │       │  - Carries forward unstaged.│
  │                 │  └─┘  │  └─┘ └─┘  │       │                             │
 
  │ ┌─┐  ┌─┐  ┌─┐   │  \ /  │  \ / \ /  │  \ /  │                             │
  │ │A├─►│B├─►│D│   │ ─ D ─ │ ─ D ─ Δ ─ │ ─ E ─ │                             │
- │ └─┘  └┬┘  └─┘   │  / \  │  / \ / \  │  / \  │   git reset --hard <commit> │
- │       │         │  ┌─┐  │  ┌─┐      │       │    - removes staged         │
- │       └─────────┼──┤B│  │  │B│      │       │      and unstaged changes   │
+ │ └─┘  └┬┘  └─┘   │  / \  │  / \ / \  │  / \  │  git reset --hard <commit>  │
+ │       │         │  ┌─┐  │  ┌─┐      │       │   - removes stashed, staged │
+ │       └─────────┼──┤B│  │  │B│      │       │     and unstaged changes    │
  │                 │  └─┘  │  └─┘      │       │                             │ 
  └─────────────────┴───────┴───────────┴───────┴─────────────────────────────┘
 ```
 
-`git restore --source=<tree>` revert a specific sub-path in the working tree to the HEAD. 
+`git restore --source=<tree>` revert a specific sub-path in the working tree to the HEAD.  It does not alter the 
 
 
 ## DEPENDENCIES
