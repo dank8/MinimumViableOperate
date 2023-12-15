@@ -1,13 +1,28 @@
 # MINIMUM VIABLE OPERATE (MVO)
 MVO proposes that development projects include a minimal and generic install and operate instruction that limits dependencies with other tools.
 
-> Your input is welcome. Use one of the following:
-> 1. [ask a question][1] 
-> 1. [suggest a package][2]
-> 1. Package maintainers, create MVO equivalent in projects you maintain
-> 1. or reach out to me [dank8][4]
->  
-> "Places I'd rather be.... contributing to a community resource, shortening the journey for others". 
+Your input is welcome:  [Ask a question][1] # Create a MVO equivalent in projects you maintain # [Suggest a package][2].  
+ 
+> "Places I'd rather be.... shortening the journey for others by contributing to a community resource." [dank8][4] 
+
+
+**Minimum Viable Operate Pages**
+
+| Operate this | What is it? |
+|:--:|:-- |
+| [Catan](./docs/com.catan/basegame-mvo.md) | Boardgame to Complete with other fearless seafarers on the shores of Catan to settle the island. |
+| [git](./docs/com.git-scm/git-mvo.md) | Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. |
+| [github](./docs/com.github/gh-mvo.md) | GitHub gives your team everything they need to ship better software faster. |
+| [sed](./docs/org.gnu/sed-mvo.md) | stream editor is used to perform basic text transformations on an input stream (a file or input from a pipeline). |
+| [shell Scripting in Linux](./docs/org.opengroup/scripting-mvo.md) | argument syntax of the standard utilities and introduces terminology used throughout POSIX.1-2017 for describing the arguments processed by the utilities. |
+
+**Notes Scrachpad**
+
+| Operate this | What is it? |
+|:--:|:-- |
+| [VS Code](./docs/com.microsoft.vscode/vscode-mvo.md) | VS Code, is a source-code editor developed by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git. |
+| [WinOS Registry](./docs/com.microsoft.windows/registry-mvo.md) | The Windows Registry is a hierarchical database that stores low-level settings for the Microsoft Windows operating system and for applications that opt to use the registry. |
+
 
 ## WHY HAVE I STARTED THIS PROJECT?
 I have come across numerous interesting packages. I would eagerly step through the getting started guide and very quickly discover a Third-Package was required to successfully use Target-Package such as OS, containerisation, and a service platform. 

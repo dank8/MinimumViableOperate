@@ -1,6 +1,10 @@
-# VSCODE
+## NAME
 
-Scratch pad of notes about VSCODE
+`VScode` - Scratch pad of notes. 
+
+## DESCRIPTION
+
+> "VS Code, is a source-code editor developed by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git."s [wikipedia.org](https://en.wikipedia.org/wiki/Visual_Studio_Code)
 
 ##  Keyboard Shortcuts
 

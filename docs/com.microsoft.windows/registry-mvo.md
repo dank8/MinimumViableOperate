@@ -1,5 +1,10 @@
+## NAME
 
-Scratch pad of notes:
+`WinOS Registry` - Scratch pad of notes.
+
+## DESCRIPTION
+
+> "The Windows Registry is a hierarchical database that stores low-level settings for the Microsoft Windows operating system and for applications that opt to use the registry."s [wikipedia.org](https://en.wikipedia.org/wiki/Windows_Registry)
 
 * [CLSID Key - Win32 apps and Registry Reference | Microsoft Learn](https://learn.microsoft.com/en-us/windows/win32/com/clsid-key-hklm)
 
