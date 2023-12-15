@@ -177,90 +177,90 @@ git log --graph
 ### Commands Local Repository commands
 
 ```
- ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
- │   ┌─────────────────────────────────────────────────────┐                                                                   │
- │   │                 Local File System                   │                                                                   │
- │   └─┬───────────────┬───────┬──────────────────────┬────┘        ┌────────┐                                                 │
- │     │   Work Tree   │       │    GIT REPOSITORY    │             │ Remote │                                                 │
- │     └───────┬───────┘       └───────────────────┬──┘             └───┬────┘                                                 │
- │             │                                   │                    │    REPOSITORY LIFECYCLE                              │
- │             │                                   │                    │                                                      │
- │             │                                   │           git clone│    1. Create the local repository                    │
- │             │◄──────────────────────────────────┤◄───────────────────┤                                                      │
- │      del *  │                                   │                    │    3. delete the local repository                    │
- │     ───────►├──────────────────────────────────►│                    │                                                      │
- └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
- ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
- │   ┌─────────────────────────────────────────────────────┐                                                                   │
- │   │                 Local File System                   │                                                                   │
- │   └─┬───────────────┬───────┬──────────────────────┬────┘        ┌────────┐                                                 │
- │     │   Work Tree   │       │    GIT REPOSITORY    │             │ Remote │                                                 │
- │     └───────┬───────┘       └───────────────────┬──┘             └───┬────┘                                                 │
- │             │                                   │                    │    FUNDAMENTAL VERSION CONTROL                       │
- │             │                                   │                    │                                                      │
- │             │                                   │            git pull│    1. git pull                                       │
- │             │◄──────────────────────────────────┤◄───────────────────┤         Fetch the latest remote repository commits   │
- │             │                                   │                    │                                                      │
- │             │ git commit -a -m                  │                    │    2. git commit -a -m <message>                     │
- │             ├──────────────────────────────────►│                    │         commits all working directory changes.       │
- │             │                                   │                    │         simple process does not stage files.         │
- │             │            git status             │                    │    3. git status                                     │
- │             │◄─────────────────────────────────►│                    │         list status of each file                     │
- │             │                                   │                    │         (unstaged > staged > committed)              │
- │             │                                   │ git push           │    4. git push origin                                │
- │             │                                   ├───────────────────►│         write commits to Remote repository           │
- └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
- ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
- │   ┌─────────────────────────────────────────────────────┐                                                                   │
- │   │                 Local File System                   │                                                                   │
- │   └─────────┬───────────────┬────────────────────┬──────┘                                                                   │
- │             │               │     GIT FOLDER     │                                                                          │
- │             │               └────┬──────────┬────┘                                                                          │
- │             │                    │          │                                                                               │
- │     ┌───────┴───────┐     ┌──────┴─┐      ┌─┴─────────┐          ┌────────┐                                                 │
- │     │   Work Tree   │     │ Staged │      │ Committed │          │ Remote │                                                 │
- │     └───────┬───────┘     └────┬───┘      └─────┬─────┘          └───┬────┘                                                 │
- │             │                  │                │                    │    VERSION CONTROL                                   │
- │             │ git add          │                │                    │                                                      │
- │             │ git add -A       │                │                    │    1. git add -A                                     │
- │             │ git rm (remove)  │                │                    │         stage working tree changes in local repo     │
- │             │ git mv (move)    │                │                    │    2. git mv <source> <desitnation>                  │
- │             ├─────────────────►│                │                    │         move and rename files,                       │
- │             │                  │                │                    │         keep version history with the new file.      │
- │             │ git reset        │                │                    │                                                      │
- │             │ git restore      │                │                    │    3. git restore                                    │
- │             │◄─────────────────┤                │                    │        Remove staging index, changes 'unstaged'      │
- │             │                  │                │                    │        does not alter the work tree files            │
- │             │                  │ git commit -m  │                    │    4. git commit -m <message text>                   │
- │             │                  ├───────────────►│                    │         create snapshot ready for remote repository  │
- │             │                  │                │                    │         NOTE: --ammend will append to previous commit│
- │             │ git stash push   │                │                    │    5. git stash push -m <message>                    │
- │             │◄────────────────►│                │                    │         staged changes stored locally with message   │
- │             │◄────────────────►│                │                    │         staged changes stored locally with message   │
- │             │ git stash list   │                │                    │    6. git stash list                                 │
- │             │      ───────────►│                │                    │         list of all stashed changes                  │
- │             │ git stash apply  │                │                    │    7. git stash apply <stashName>                    │
- │             │◄─────────────────┤                │                    │         remove all changes from working Tree         │
- │             │                  │                │                    │         restore named stash                          │
- │             │                                   │    git fetch       │    8. git fetch <remote>                             │
- │             │                                   ├───────────────────►│         downloads all data from remote repository    │
- │             │                                   │                    │                                                      │
- │             │                        git switch │                    │    9. git switch origin <branch>                     │
- │             │◄──────────────────────────────────┤                    │         update work tree files to another branch     │
- │             │                                   │                    │                                                      │
- │             │                        git rebase │                    │                                                      │
- │             │                         git merge │                    │   10. git merge <branch>  [--abort]                  │
- │             │                       ┌───────────┤                    │         add changes from another branch to work Tree │
- │             │◄──────────────────────┤           │                    │                                                      │
- │             │                       └───────────┤                    │                                                      │
- │             │                                   │                    │                                                      │
- │             │                  git bisect start │                    │                                                      │
- │             │                    git bisect bad │                    │                                                      │
- │             │                   git bisect good │                    │  11. git bisect                                      │
- │             │                       ┌───────────┤                    │         semi-automated fetch of specific versions    │
- │             │◄──────────────────────┤           │                    │         Assist in identifying version with bug.      │
- │             │                       └───────────┤                    │                                                      │
- └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+ ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+ │ ┌─────────────────────────────────────────────────────┐                                                            │
+ │ │                 Local File System                   │                                                            │
+ │ └─┬───────────────┬───────┬──────────────────────┬────┘   ┌────────┐                                               │
+ │   │   Work Tree   │       │    GIT REPOSITORY    │        │ Remote │                                               │
+ │   └───────┬───────┘       └───────────────────┬──┘        └───┬────┘                                               │
+ │           │                                   │               │    REPOSITORY LIFECYCLE                            │
+ │           │                                   │               │                                                    │
+ │           │                                   │    `git clone`│    1. Create the local repository                  │
+ │           │◄──────────────────────────────────┤◄──────────────┤                                                    │
+ │   `del *` │                                   │               │    3. delete the local repository                  │
+ │   ───────►├──────────────────────────────────►│               │                                                    │
+ └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+ ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+ │ ┌─────────────────────────────────────────────────────┐                                                            │
+ │ │                 Local File System                   │                                                            │
+ │ └─┬───────────────┬───────┬──────────────────────┬────┘   ┌────────┐                                               │
+ │   │   Work Tree   │       │    GIT REPOSITORY    │        │ Remote │                                               │
+ │   └───────┬───────┘       └───────────────────┬──┘        └───┬────┘                                               │
+ │           │                                   │               │    FUNDAMENTAL VERSION CONTROL                     │
+ │           │                                   │               │                                                    │
+ │           │                                   │     `git pull`│    1. `git pull`                                   │
+ │           │◄──────────────────────────────────┤◄──────────────┤         Fetch the latest remote repository commits │
+ │           │                                   │               │                                                    │
+ │           │ `git commit -a -m`                │               │    2. `git commit -a -m <message>`                 │
+ │           ├──────────────────────────────────►│               │         commits all working directory changes.     │
+ │           │                                   │               │         simple process does not stage files.       │
+ │           │           `git status`            │               │    3. `git status`                                 │
+ │           │◄─────────────────────────────────►│               │         list status of each file                   │
+ │           │                                   │               │         (unstaged > staged > committed)            │
+ │           │                                   │ `git push`    │    4. `git push origin`                            │
+ │           │                                   ├──────────────►│         write commits to Remote repository         │
+ └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+ ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+ │ ┌─────────────────────────────────────────────────────┐                                                            │
+ │ │                 Local File System                   │                                                            │
+ │ └─────────┬───────────────┬────────────────────┬──────┘                                                            │
+ │           │               │     GIT FOLDER     │                                                                   │
+ │           │               └────┬──────────┬────┘                                                                   │
+ │           │                    │          │                                                                        │
+ │   ┌───────┴───────┐     ┌──────┴─┐      ┌─┴─────────┐     ┌────────┐                                               │
+ │   │   Work Tree   │     │ Staged │      │ Committed │     │ Remote │                                               │
+ │   └───────┬───────┘     └────┬───┘      └─────┬─────┘     └───┬────┘                                               │
+ │           │                  │                │               │    VERSION CONTROL                                 │
+ │           │ `git add`        │                │               │                                                    │
+ │           │ `git add -A`     │                │               │    1. `git add -A`                                 │
+ │           │ `git rm (remove)`│                │               │         stage working tree changes in local repo   │
+ │           │ `git mv (move)`  │                │               │    2. `git mv <source> <desitnation>`              │
+ │           ├─────────────────►│                │               │         move and rename files,                     │
+ │           │                  │                │               │         keep version history with the new file.    │
+ │           │ `git reset`      │                │               │                                                    │
+ │           │ `git restore`    │                │               │    3. `git restore`                                │
+ │           │◄─────────────────┤                │               │        Remove staging index, changes 'unstaged'    │
+ │           │                  │                │               │        does not alter the work tree files          │
+ │           │                  │ `git commit -m`│               │    4. `git commit -m <message text>`               │
+ │           │                  ├───────────────►│               │         create snapshot ready for remote repository│
+ │           │                  │                │               │         NOTE: `--ammend` append to previous commit │
+ │           │ `git stash push` │                │               │    5. `git stash push -m <message>`                │
+ │           │◄────────────────►│                │               │         staged changes stored locally with message │
+ │           │◄────────────────►│                │               │         staged changes stored locally with message │
+ │           │ `git stash list` │                │               │    6. `git stash list`                             │
+ │           │      ───────────►│                │               │         list of all stashed changes                │
+ │           │ `git stash apply`│                │               │    7. `git stash apply <stashName>`                │
+ │           │◄─────────────────┤                │               │         remove all changes from working Tree       │
+ │           │                  │                │               │         restore named stash                        │
+ │           │                                   │ `git fetch`   │    8. `git fetch <remote>`                         │
+ │           │                                   ├──────────────►│         downloads all data from remote repository  │
+ │           │                                   │               │                                                    │
+ │           │                      `git switch` │                    9. `git switch origin <branch>`                 │
+ │           │◄──────────────────────────────────┤                         update work tree files to another branch   │
+ │           │                                   │                                                                    │
+ │           │                      `git rebase` │                                                                    │
+ │           │                       `git merge` │                   10. `git merge <branch>  [--abort]`              │
+ │           │                       ┌───────────┤                         add changes from another branch            │
+ │           │◄──────────────────────┤           │                                                                    │
+ │           │                       └───────────┤                                                                    │
+ │           │                                   │                                                                    │
+ │           │                `git bisect start` │                                                                    │
+ │           │                  `git bisect bad` │                                                                    │
+ │           │                 `git bisect good` │                  11. `git bisect`                                  │
+ │           │                       ┌───────────┤                         semi-automated fetch of specific versions  │
+ │           │◄──────────────────────┤           │                         Assist in identifying version with bug.    │
+ │           │                       └───────────┤                                                                    │
+ └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Fetch and Pull
