@@ -1,5 +1,6 @@
 ## NAME
- sed, minimum Viable operating instruction for package org/gnu/sed using *Substitute* command
+
+`sed` - minimum Viable operating instruction for package org/gnu/sed using *Substitute* command
 
 ## SYNOPSIS
 
@@ -15,6 +16,8 @@ sed [OPTIONS] [address]s/[regexp]/[substitute]/[flags] [STREAM]
 
 ## DESCRIPTION
 A working example of the minimum syntax values necessary for successful execution of gnu `sed` package. `sed` includes a fully featured scripting language [sed, gnu.org, 2023][4].
+
+> "sed is a stream editor. A stream editor is used to perform basic text transformations on an input stream (a file or input from a pipeline)." [gnu.org](https://www.gnu.org/software/sed/manual/sed.html)
 
 ## INSTALLATION
 - na, installed with various Linux kernels 

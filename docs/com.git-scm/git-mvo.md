@@ -1,5 +1,5 @@
 ## NAME
- git, a minimum viable operating instruction for package git 
+ `git` - a minimum viable operating instruction for package git 
 
 ## SYNOPSIS
 
@@ -11,6 +11,7 @@ git -h
 ## DESCRIPTION
 List of minimum commands needed to stage file changes to a version control system with a minimum workflow.
 
+> "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency." [git-scm.com](https://git-scm.com/)
 
 ## INSTALLATION
 

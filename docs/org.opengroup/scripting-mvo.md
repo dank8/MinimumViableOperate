@@ -1,5 +1,6 @@
 ## NAME
- utilitiy, minimum viable operating instruction for POSIX *standard utilities*, guidelines for writing maintainable code.
+ 
+`scripting and utilities` - minimum viable operating instruction for POSIX *standard utilities*, guidelines for writing maintainable code.
 
 ## SYNOPSIS
 
@@ -15,9 +16,9 @@ UTILITY_NAME [ -abcd argument][ -e][ -f][ -g argument][ -h| -i] [--] [OPERAND...
 
 ## DESCRIPTION
 
-A working examples of the minimum syntax values necessary for successful execution of utilities and scripts from the command line.
+Working examples of the minimum syntax values necessary for successful execution of utilities and scripts from the command line.
 
-> "argument syntax of the standard utilities and introduces terminology used throughout POSIX.1-2017 for describing the arguments processed by the utilities." [opengroup.org, 2023](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html#tag_12)
+> "argument syntax of the standard utilities and introduces terminology used throughout POSIX.1-2017 for describing the arguments processed by the utilities." [opengroup.org](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html#tag_12)
 
 1. Utility Conventions [opengroup.org, 2023](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html#tag_12_01)
    - regexp pattern for validation (TBC)

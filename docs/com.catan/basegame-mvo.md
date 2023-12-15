@@ -1,5 +1,7 @@
+
 ## NAME
- CATAN Basegame, a minimum viable operating instruction for package Catan
+
+`CATAN Boardgame` - a minimum viable operating instruction for package.
 
 ## SYNOPSIS
 none
@@ -7,7 +9,7 @@ none
 ## DESCRIPTION
 How to start playing CATAN Basegame in less than 5 minutes.
 
-> "Picture youreself in the era of discoeries: after a long voyage of great deprivation, your ships have finally reached the coast of an uncharted island. Its name shall be Catan!" [catan.com, 2023][1]
+> "Picture youreself in the era of discoeries: after a long voyage of great deprivation, your ships have finally reached the coast of an uncharted island. Its name shall be Catan!" [catan.com][1]
 
 ### Terms and concepts
 *CATAN Basegame*, the original version of CATAN board game

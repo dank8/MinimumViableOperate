@@ -1,5 +1,5 @@
 ## NAME
- git, a minimum viable operating instruction for package git 
+ `github` - a minimum viable operating instruction for package git 
 
 ## SYNOPSIS
 
@@ -12,7 +12,7 @@ gh [OPTIONS]
 
 A working example of minimum syntax to authenticate with a GitHub-hosted project.
 
-> QUOTE FROM DEVELOPER
+> "GitHub gives your team everything they need to ship better software faster."s [github.com](https://github.com)
 
 ## INSTALLATION
 
