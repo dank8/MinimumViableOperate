@@ -225,12 +225,12 @@ git log --graph
  │           │ `git add -A`     │                │               │    1. `git add -A`                                 │
  │           │ `git rm (remove)`│                │               │         stage working tree changes in local repo   │
  │           │ `git mv (move)`  │                │               │    2. `git mv <source> <desitnation>`              │
- │           ├─────────────────►│                │               │         move and rename files,                     │
- │           │                  │                │               │         keep version history with the new file.    │
+ │           ├─────────────────►│                │               │         move and rename files.                     │
+ │           │                  │                │               │         Keep version history with the new file.    │
  │           │ `git reset`      │                │               │                                                    │
  │           │ `git restore`    │                │               │    3. `git restore`                                │
- │           │◄─────────────────┤                │               │        Remove staging index, changes 'unstaged'    │
- │           │                  │                │               │        does not alter the work tree files          │
+ │           │◄─────────────────┤                │               │        Remove staging index, changes 'unstaged'.   │
+ │           │                  │                │               │        Does not alter the work tree files.         │
  │           │                  │ `git commit -m`│               │    4. `git commit -m <message text>`               │
  │           │                  ├───────────────►│               │         create snapshot ready for remote repository│
  │           │                  │                │               │         NOTE: `--ammend` append to previous commit │
@@ -274,7 +274,7 @@ Both commands resolve a conflict where there is more than one 'latest' commit on
 
 ```
  ┌─────────────────────────────┐
- │ Branch2                     │
+ │ ORIGIN Branch2              │
  │ ┌─┐  ┌─┐  ┌─┐               │
  │ │A├──┤B├──┤D│               │
  │ └─┘  └┬┘  └─┘               │
@@ -288,7 +288,7 @@ Both commands resolve a conflict where there is more than one 'latest' commit on
 
 ```
  ┌─────────────────────────────┐
- │ Branch2                     │
+ │ ORIGIN Branch2              │
  │ ┌─┐  ┌─┐  ┌─┐               │
  │ │A├──┤B├──┤D├─┐             │
  │ └─┘  └┬┘  └─┘ │git merge┌─┐ │
@@ -302,7 +302,7 @@ Both commands resolve a conflict where there is more than one 'latest' commit on
 
 ```
  ┌─────────────────────────────┐
- │ Branch2                     │
+ │ ORIGIN Branch2              │
  │ ┌─┐  ┌─┐  ┌─┐git rebase┌─┐  │
  │ │A├─►│B├─►│D├─────────►│E│  │
  │ └─┘  └─┘  └─┘          └─┘  │
@@ -318,15 +318,15 @@ Both commands resolve a conflict where there is more than one 'latest' commit on
 `git revert` reverse the effect of an earlier commit
 
 ```
- ┌──────────────────────┐
- │ Branch2              │
- │ ┌─┐  ┌─┐  ┌─┐  ┌──┐  │
- │ │A├─►│B├─►│D├─►│!B│  │
- │ └─┘  └.┘  └─┘  └.─┘  │
- │       ...........    │ 
- │                      │
- │                      │
- └──────────────────────┘
+ ┌─────────────────────────────┐
+ │ ORIGIN Branch2              │
+ │ ┌─┐  ┌─┐  ┌─┐  ┌──┐         │
+ │ │A├─►│B├─►│D├─►│!B│         │
+ │ └─┘  └.┘  └─┘  └.─┘         │
+ │       ...........           │ 
+ │                             │
+ │                             │
+ └─────────────────────────────┘
 ```
 
 `git reset` remove staged or unstaged differences from local storage. 
@@ -367,10 +367,10 @@ Optionally specify a <commit> index to change the local HEAD to a different comm
 
 ```
  ┌─────────────────────────────┐
- │ Branch2                     │
- │ ┌─┐  ┌─┐  ┌─┐git rebase┌─┐  │
- │ │A├─►│B├─►│D├─────────►│E│  │
- │ └─┘  └─┘  └─┘          └─┘  │
+ │ ORIGIN Branch2              │
+ │ ┌─┐  ┌─┐  ┌─┐git restore┌─┐ │
+ │ │A├─►│B├─►│D├──────── ─►│E│ │
+ │ └─┘  └─┘  └─┘           └─┘ │
  │           \ /               │ 
  │          ─ C ─              │
  │           / \               │
