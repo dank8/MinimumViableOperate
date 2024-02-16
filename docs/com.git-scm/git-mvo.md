@@ -230,7 +230,7 @@ git log --graph
  │           │ `git reset`      │                │               │                                                    │
  │           │ `git restore`    │                │               │    3. `git restore`                                │
  │           │◄─────────────────┤                │               │        Remove staging index, changes 'unstaged'.   │
- │           │                  │                │               │        Does not alter the work tree files.         │
+ │           │                  │                │               │        May alter files (read details).             │
  │           │                  │ `git commit -m`│               │    4. `git commit -m <message text>`               │
  │           │                  ├───────────────►│               │         create snapshot ready for remote repository│
  │           │                  │                │               │         NOTE: `--ammend` append to previous commit │
@@ -340,6 +340,11 @@ Optionally specify a <commit> index to change the local HEAD to a different comm
  │ │A├─►│B├─►│D├───┼──┤D│  │  │D│∪│Δ│  │  │E│  │ local storage begin state   │
  │ └─┘  └─┘  └─┘   │  └─┘  │  └─┘ └─┘  │  └─┘  │                             │
 
+ │ ┌─┐  ┌─┐  ┌─┐   │  ┌─┐  │  ┌─┐ ┌─┐  │  \ /  │                             │
+ │ │A├─►│B├─►│D├───┼──┤D│  │  │D│∪│Δ│  │ ─ E ─ │ git reset                   │
+ │ └─┘  └─┘  └─┘   │  └─┘  │  └─┘ └─┘  │  / \  │   - Remove staging index,   │
+ │                 │       │           │       │     Not alter the work tree.│
+     
  │ ┌─┐  ┌─┐  ┌─┐   │  \ /  │  ┌─┐ ┌─┐  │  ┌─┐  │                             │
  │ │A├─►│B├─►│D│   │ ─ D ─ │  │D│∪│Δ│  │  │E│  │ git reset --soft <commit>   │
  │ └─┘  └┬┘  └─┘   │  / \  │  └─┘ └─┘  │  └─┘  │  - Change HEAD only         │
